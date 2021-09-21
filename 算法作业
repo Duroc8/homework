@@ -1,0 +1,72 @@
+#include<iostream>
+using namespace std;
+// 跳台阶  递归
+int f(int n)     //时间复杂度 O（1）  空间复杂度 O（1）
+{
+	if (n == 1) {
+		return 1; 
+	}
+	else if (n == 2)
+	{
+		return 2;
+	}
+	return f(n - 1) + f(n - 2);
+}
+//跳台阶  递推
+int fun1(int n)
+{
+	int first = 1;
+	int second = 2;
+	int res = 0;
+	for (int i = 3; i <= n; i++)      //时间复杂度 O（n）  空间复杂度 O（n）
+	{
+		res = first + second;
+		first = second;
+		second = res;
+	}
+	return res;
+}
+
+//阶乘  递归
+int test1(int N)      //时间复杂度 O（1）  空间复杂度 O（1）
+{
+	if (N == 1)
+	{
+		return 1;
+	}
+	else if(N==0)
+	{
+		return 0;
+	}
+	return N*test1(N - 1);
+}
+//阶乘  递推
+int test2(int N)
+{
+	if (N == 0)
+		return 0;
+	int res = 1;
+	for (int i = 2; i <= N; i++)     //时间复杂度 O（n）  空间复杂度 O（n）
+	{
+		res *= i;
+	}
+	return res;
+}
+int main()
+{
+	//int n = 0;
+	//cout << "请输入需计算的台阶数：" << endl;
+	//cin >> n;
+	//cout << "递归方式下总方法：" << f(n) << endl;
+
+	//cout << "递推方式下总方法：" << fun1(n) << endl;
+
+	//阶乘
+	cout << "请输入需要计算的阶乘数N：" << endl;
+	int N = 0;
+	cin >> N;
+	cout << "递归方式阶乘" << N << "=" << test1(N) << endl;
+
+	cout << "递推方式阶乘" << N << "=" << test2(N) << endl;
+	return 0;
+}
